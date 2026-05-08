@@ -1,14 +1,37 @@
 {
-  "name": "longest-common-subsequence",
+  "name": "@ericwhitedev/lcsts",
   "version": "1.0.0",
   "description": "Longest Common Subsequence in TypeScript",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "tsc",
     "docs": "typedoc",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "lcs",
+    "longest-common-subsequence",
+    "diff",
+    "comparison",
+    "typescript"
+  ],
+  "author": "Eric White <eric@ericwhite.com> (https://www.ericwhite.com)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "typedoc": "^0.28.19",
