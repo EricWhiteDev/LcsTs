@@ -9,6 +9,7 @@
     "strict": true,
     "esModuleInterop": true,
     "declaration": true,
+    "declarationMap": true,
     "sourceMap": true
   },
   "include": ["src/**/*"]
