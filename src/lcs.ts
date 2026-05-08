@@ -6,11 +6,42 @@ import { CorrelatedSequence } from './correlated-sequence';
 import { CorrelationStatus } from './correlation-status';
 import { LcsSettings } from './lcs-settings';
 
+/**
+ * Compares two string arrays and returns the correlated subsequences.
+ *
+ * @remarks
+ * String values are wrapped in {@link ComparisonUnitTokenString} internally.
+ *
+ * @param tokens1 - The first array of strings.
+ * @param tokens2 - The second array of strings.
+ * @param settings - Algorithm configuration (see {@link createLcsSettings}).
+ * @returns An array of {@link CorrelatedSequence} describing equal, inserted,
+ *   and deleted runs.
+ *
+ * @example
+ * ```typescript
+ * const result = compare(
+ *   ['the', 'quick', 'brown', 'fox'],
+ *   ['the', 'slow', 'brown', 'dog'],
+ *   createLcsSettings(),
+ * );
+ * ```
+ */
 export function compare(
   tokens1: string[],
   tokens2: string[],
   settings: LcsSettings,
 ): readonly CorrelatedSequence[];
+/**
+ * Compares two {@link ComparisonUnitToken} arrays and returns the correlated
+ * subsequences.
+ *
+ * @param tokens1 - The first array of tokens.
+ * @param tokens2 - The second array of tokens.
+ * @param settings - Algorithm configuration (see {@link createLcsSettings}).
+ * @returns An array of {@link CorrelatedSequence} describing equal, inserted,
+ *   and deleted runs.
+ */
 export function compare(
   tokens1: ComparisonUnitToken[],
   tokens2: ComparisonUnitToken[],
@@ -33,6 +64,7 @@ export function compare(
   );
 }
 
+/** @internal */
 function compareTokens(
   tokens1: ComparisonUnitToken[],
   tokens2: ComparisonUnitToken[],
@@ -75,6 +107,7 @@ function compareTokens(
   return correlatedSequenceList;
 }
 
+/** @internal */
 function doLcsAlgorithm(
   unknown: CorrelatedSequence,
   settings: LcsSettings,
@@ -147,6 +180,7 @@ function doLcsAlgorithm(
   ];
 }
 
+/** @internal */
 function doFastFind(
   list1: ComparisonUnitToken[],
   list2: ComparisonUnitToken[],
@@ -214,6 +248,7 @@ function doFastFind(
   return null;
 }
 
+/** @internal */
 function createReplacementCorrelatedSequencesFromUnknown(
   startOfCommon1: number,
   startOfCommon2: number,
@@ -252,6 +287,7 @@ function createReplacementCorrelatedSequencesFromUnknown(
   return result;
 }
 
+/** @internal */
 function localSplice(
   list: CorrelatedSequence[],
   index: number,
@@ -264,6 +300,7 @@ function localSplice(
   ];
 }
 
+/** @internal */
 function findCommonAtBeginningAndEnd(
   unknown: CorrelatedSequence,
   settings: LcsSettings,
