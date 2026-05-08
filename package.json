@@ -1,6 +1,6 @@
 {
   "name": "@ericwhitedev/lcsts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Longest Common Subsequence in TypeScript",
   "type": "module",
   "main": "./dist/index.js",
